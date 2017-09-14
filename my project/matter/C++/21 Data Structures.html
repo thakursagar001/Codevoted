@@ -1,0 +1,238 @@
+<center><h1>Data Structure</h1></center>
+<hr>
+<p>C/C++ arrays allow you to define variables that combine several data items of the same kind but <b>structure</b> is another user defined data type which allows you to combine data items of different kinds.</p>
+<p>Structures are used to represent a record, suppose you want to keep track of your books in a library. You might want to track the following attributes about each book:</p>
+<ul class="list">
+<li>Title </li>
+<li>Author  </li>
+<li>Subject </li>
+<li>Book ID</li>
+</ul>
+<h2>Defining a Structure</h2>
+<p>To define a structure, you must use the struct statement. The struct statement defines a new data type, with more than one member, for your program. The format of the struct statement is this:</p>
+<pre class="prettyprint notranslate">
+struct [structure tag] {
+   member definition;
+   member definition;
+   ...
+   member definition;
+} [one or more structure variables];  
+</pre>
+<p>The <b>structure tag</b> is optional and each member definition is a normal variable definition, such as int i; or float f; or any other valid variable definition. At the end of the structure's definition, before the final semicolon, you can specify one or more structure variables but it is optional. Here is the way you would declare the Book structure:</p>
+<pre class="prettyprint notranslate">
+struct Books {
+   char  title[50];
+   char  author[50];
+   char  subject[100];
+   int   book_id;
+}book;  
+</pre>
+<h2>Accessing Structure Members</h2>
+<p>To access any member of a structure, we use the <b>member access operator (.)</b>. The member access operator is coded as a period between the structure variable name and the structure member that we wish to access. You would use <b>struct</b> keyword to define variables of structure type. Following is the example to explain usage of structure:</p>
+<pre class="prettyprint notranslate tryit">
+#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+ 
+using namespace std;
+ 
+struct Books {
+   char  title[50];
+   char  author[50];
+   char  subject[100];
+   int   book_id;
+};
+ 
+int main( ) {
+   struct Books Book1;        // Declare Book1 of type Book
+   struct Books Book2;        // Declare Book2 of type Book
+ 
+   // book 1 specification
+   strcpy( Book1.title, "Learn C++ Programming");
+   strcpy( Book1.author, "Chand Miyan"); 
+   strcpy( Book1.subject, "C++ Programming");
+   Book1.book_id = 6495407;
+
+   // book 2 specification
+   strcpy( Book2.title, "Telecom Billing");
+   strcpy( Book2.author, "Yakit Singha");
+   strcpy( Book2.subject, "Telecom");
+   Book2.book_id = 6495700;
+ 
+   // Print Book1 info
+   cout &lt;&lt; "Book 1 title : " &lt;&lt; Book1.title &lt;&lt;endl;
+   cout &lt;&lt; "Book 1 author : " &lt;&lt; Book1.author &lt;&lt;endl;
+   cout &lt;&lt; "Book 1 subject : " &lt;&lt; Book1.subject &lt;&lt;endl;
+   cout &lt;&lt; "Book 1 id : " &lt;&lt; Book1.book_id &lt;&lt;endl;
+
+   // Print Book2 info
+   cout &lt;&lt; "Book 2 title : " &lt;&lt; Book2.title &lt;&lt;endl;
+   cout &lt;&lt; "Book 2 author : " &lt;&lt; Book2.author &lt;&lt;endl;
+   cout &lt;&lt; "Book 2 subject : " &lt;&lt; Book2.subject &lt;&lt;endl;
+   cout &lt;&lt; "Book 2 id : " &lt;&lt; Book2.book_id &lt;&lt;endl;
+
+   return 0;
+}
+</pre>
+<p>When the above code is compiled and executed, it produces the following result:</p>
+<pre class="result notranslate">
+Book 1 title : Learn C++ Programming
+Book 1 author : Chand Miyan
+Book 1 subject : C++ Programming
+Book 1 id : 6495407
+Book 2 title : Telecom Billing
+Book 2 author : Yakit Singha
+Book 2 subject : Telecom
+Book 2 id : 6495700
+</pre>
+<h2>Structures as Function Arguments</h2>
+<p>You can pass a structure as a function argument in very similar way as you pass any other variable or pointer. You would access structure variables in the similar way as you have accessed in the above example:</p>
+<pre class="prettyprint notranslate tryit">
+#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+ 
+using namespace std;
+void printBook( struct Books book );
+
+struct Books {
+   char  title[50];
+   char  author[50];
+   char  subject[100];
+   int   book_id;
+};
+ 
+int main( ) {
+   struct Books Book1;        // Declare Book1 of type Book
+   struct Books Book2;        // Declare Book2 of type Book
+ 
+   // book 1 specification
+   strcpy( Book1.title, "Learn C++ Programming");
+   strcpy( Book1.author, "Chand Miyan"); 
+   strcpy( Book1.subject, "C++ Programming");
+   Book1.book_id = 6495407;
+
+   // book 2 specification
+   strcpy( Book2.title, "Telecom Billing");
+   strcpy( Book2.author, "Yakit Singha");
+   strcpy( Book2.subject, "Telecom");
+   Book2.book_id = 6495700;
+ 
+   // Print Book1 info
+   printBook( Book1 );
+
+   // Print Book2 info
+   printBook( Book2 );
+
+   return 0;
+}
+
+void printBook( struct Books book ) {
+   cout &lt;&lt; "Book title : " &lt;&lt; book.title &lt;&lt;endl;
+   cout &lt;&lt; "Book author : " &lt;&lt; book.author &lt;&lt;endl;
+   cout &lt;&lt; "Book subject : " &lt;&lt; book.subject &lt;&lt;endl;
+   cout &lt;&lt; "Book id : " &lt;&lt; book.book_id &lt;&lt;endl;
+}
+</pre>
+<p>When the above code is compiled and executed, it produces the following result:</p>
+<pre class="result notranslate">
+Book title : Learn C++ Programming
+Book author : Chand Miyan
+Book subject : C++ Programming
+Book id : 6495407
+Book title : Telecom Billing
+Book author : Yakit Singha
+Book subject : Telecom
+Book id : 6495700
+</pre>
+<h2>Pointers to Structures</h2>
+<p>You can define pointers to structures in very similar way as you define pointer to any other variable as follows:</p>
+<pre class="result notranslate">
+struct Books *struct_pointer;
+</pre>
+<p>Now, you can store the address of a structure variable in the above defined pointer variable. To find the address of a structure variable, place the &amp; operator before the structure's name as follows:</p>
+<pre class="result notranslate">
+struct_pointer = &amp;Book1;
+</pre>
+<p>To access the members of a structure using a pointer to that structure, you must use the -&gt; operator as follows:</p>
+<pre class="result notranslate">
+struct_pointer-&gt;title;
+</pre>
+<p>Let us re-write above example using structure pointer, hope this will be easy for you to understand the concept:</p>
+<pre class="prettyprint notranslate tryit">
+#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+ 
+using namespace std;
+void printBook( struct Books *book );
+
+struct Books {
+   char  title[50];
+   char  author[50];
+   char  subject[100];
+   int   book_id;
+};
+ 
+int main( ) {
+   struct Books Book1;        // Declare Book1 of type Book
+   struct Books Book2;        // Declare Book2 of type Book
+ 
+   // Book 1 specification
+   strcpy( Book1.title, "Learn C++ Programming");
+   strcpy( Book1.author, "Chand Miyan"); 
+   strcpy( Book1.subject, "C++ Programming");
+   Book1.book_id = 6495407;
+
+   // Book 2 specification
+   strcpy( Book2.title, "Telecom Billing");
+   strcpy( Book2.author, "Yakit Singha");
+   strcpy( Book2.subject, "Telecom");
+   Book2.book_id = 6495700;
+ 
+   // Print Book1 info, passing address of structure
+   printBook( &amp;Book1 );
+
+   // Print Book2 info, passing address of structure
+   printBook( &amp;Book2 );
+
+   return 0;
+}
+
+// This function accept pointer to structure as parameter.
+void printBook( struct Books *book ) {
+   cout &lt;&lt; "Book title : " &lt;&lt; book-&gt;title &lt;&lt;endl;
+   cout &lt;&lt; "Book author : " &lt;&lt; book-&gt;author &lt;&lt;endl;
+   cout &lt;&lt; "Book subject : " &lt;&lt; book-&gt;subject &lt;&lt;endl;
+   cout &lt;&lt; "Book id : " &lt;&lt; book-&gt;book_id &lt;&lt;endl;
+}
+</pre>
+<p>When the above code is compiled and executed, it produces the following result:</p>
+<pre class="result notranslate">
+Book title : Learn C++ Programming
+Book author : Chand Miyan
+Book subject : C++ Programming
+Book id : 6495407
+Book title : Telecom Billing
+Book author : Yakit Singha
+Book subject : Telecom
+Book id : 6495700
+</pre>
+<h2>The typedef Keyword</h2>
+<p>There is an easier way to define structs or you could "alias" types you create. For example:</p>
+<pre class="prettyprint notranslate">
+typedef struct {
+   char  title[50];
+   char  author[50];
+   char  subject[100];
+   int   book_id;
+}Books;
+</pre>
+<p>Now, you can use <i>Books</i> directly to define variables of <i>Books</i> type  without using struct keyword. Following is the example:</p>
+<pre class="result notranslate">
+Books Book1, Book2;
+</pre>
+<p>You can use <b>typedef</b> keyword for non-structs as well as follows:</p>
+<pre class="result notranslate">
+typedef long int *pint32;
+ 
+pint32 x, y, z;
+</pre>
+<p>x, y and z are all pointers to long ints</p>

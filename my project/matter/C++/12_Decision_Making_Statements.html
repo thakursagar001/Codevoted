@@ -1,0 +1,22 @@
+<center><h1>Decision Making Structures</h1></center>
+<hr>
+<p>Decision making structures require that the programmer specify one or more conditions to be evaluated or tested by the program, along with a statement or statements to be executed if the condition is determined to be true, and optionally, other
+statements to be executed if the condition is determined to be false.</p>
+<p>Following is the general form of a typical decision making structure found in most of the programming languages:</p>
+<img src="/cplusplus/images/cpp_decision_making.jpg" alt="C++ decision making" />
+<p>C++ programming language provides following types of decision making statements. Click the following links to check their detail.</p>
+<table class="table table-bordered">
+<tr><th width="35%">Statement</th><th>Description</th></tr>
+<tr><td><p><a href="/cplusplus/cpp_if_statement.htm" title="C++ if statement">if statement</a></p></td><td>An if statement consists of a boolean expression followed by one or more statements.</td></tr>
+<tr><td><p><a href="/cplusplus/cpp_if_else_statement.htm" title="C++ if...else statement">if...else statement</a></p></td><td>An if statement can be followed by an optional else statement, which executes when the boolean expression is false.</td></tr>
+<tr><td><p><a href="/cplusplus/cpp_switch_statement.htm" title="C++ switch statement">switch statement</a></p></td><td>A switch statement allows a variable to be tested for equality against a list of values.</td></tr>
+<tr><td><p><a href="/cplusplus/cpp_nested_if.htm" title="C++ nested if statements">nested if statements</a></p></td><td>You can use one if or else if statement inside another if or else if statement(s).</td></tr>
+<tr><td><p><a href="/cplusplus/cpp_nested_switch.htm" title="C++ nested switch statements">nested switch statements</a></p></td><td>You can use one swicth statement inside another switch statement(s).</td></tr>
+</table>
+<h2>The ? : Operator</h2>
+<p>We have covered <a href="/cplusplus/cpp_conditional_operator.htm">conditional operator ? :</a> in previous chapter which can be used to replace <b>if...else</b> statements. It has the following general form:</p>
+<pre class="result notranslate">
+Exp1 ? Exp2 : Exp3;
+</pre>
+<p>Where Exp1, Exp2, and Exp3 are expressions. Notice the use and placement of the colon.</p>
+<p>The value of a ? expression is determined like this: Exp1 is evaluated. If it is true, then Exp2 is evaluated and becomes the value of the entire ? expression. If Exp1 is false, then Exp3 is evaluated and its value becomes the value of the expression.</p>
